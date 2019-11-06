@@ -33,21 +33,21 @@ cd log-scanner
 
 ## Usage
 
-### Using Docker
+### Using Docker (recommanded)
 
 1. Build the docker
 ```bash
 docker build . -t log-scanner
 ```
 
-1. Edit `inputs/repositories.txt` to include all the repositories you wish to scan, with a newline between them. for example:
+2. Edit `inputs/repositories.txt` to include all the repositories you wish to scan, with a newline between them. for example:
 ```
 https://github.com/Rookout/explorook
 https://github.com/Rookout/tutorial-java
 https://github.com/Rookout/tutorial-nodejs
 ```
 
-1. Run
+3. Run
 ```bash
 docker run \
     -v `pwd`/inputs:/app/inputs \
@@ -56,7 +56,7 @@ docker run \
     log-scanner
 ```
 
-_Once the scanner is done, you will find the results in the `outputs` folder_
+_Once the scanner is done, you will find the results in the `outputs` folder._  
 For full details about the outputs, check out [OUTPUTS.md](https://github.com/Rookout/log-scanner/blob/master/OUTPUTS.md).
 
 ### Running Locally
@@ -66,24 +66,24 @@ For full details about the outputs, check out [OUTPUTS.md](https://github.com/Ro
 pip install -r requirements.txt
 ```
 
-1. Set your [Github token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) as a local environment variable.
+2. Set your [Github token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) as a local environment variable.
 ```bash
-export GITHUB_TOKEN="YOUR_TOKEN_HERE"
+export GITHUB_TOKEN="<YOUR_TOKEN_HERE>"
 ```
 
-1. Go to the [inputs/repositories.txt file](https://github.com/Rookout/log-scanner/tree/master/inputs/repositories.txt) and edit it to include all the repositories you wish to scan, with a newline between them. for example:
+3. Edit the local [inputs/repositories.txt file](https://github.com/Rookout/log-scanner/tree/master/inputs/repositories.txt) to include all the repositories you wish to scan, with a newline between them. for example:
 ```
 https://github.com/Rookout/explorook
 https://github.com/Rookout/tutorial-java
 https://github.com/Rookout/tutorial-nodejs
 ```
 
-1. Run the program.
+4. Run the program.
 ```bash
 python index.py
 ```
 
-_Once the scanner is done, you will find the results in the `outputs` folder_
+_Once the scanner is done, you will find the results in the `outputs` folder_.  
 For full details about the outputs, check out [OUTPUTS.md](https://github.com/Rookout/log-scanner/blob/master/OUTPUTS.md).
 
 ## Disclaimers
@@ -92,7 +92,7 @@ Rookout Log Scanner communicates widely with the [Github api](https://developer.
 
 Rookout Log Scanner **currently supports Python, Java, JavaScript, and C#** scanning. As a result, all the extracted data from the repositories relate to files that are written in those languages only. We are currently working to expand the scope of the project and support additional common languages.
 
-During the scanning process, at any given moment, few repositories will be cloned onto the user's computer, and immediately deleted at the end of the scanning. The exact amount depends on the machine's CPU capabilities. For the process to succeed, the user should to make sure he has spare memory in accordance with the input repositories. Please notice that the scanning process takes around a 10-15 minutes per 100 repositories (on average), depending on their sizes and the internet connection quality.
+During the scanning process, at any given moment, few repositories will be cloned onto the user's computer, and immediately deleted at the end of the scanning. The exact amount of simultaneously cloned repositories depends on the machine's CPU capabilities. For the process to succeed, the user should to make sure he has spare memory in accordance with the input repositories. Please notice that the scanning process takes around 10-15 minutes per 100 repositories (on average), depending on their sizes and the internet connection quality.
 
 Rookout Log Scanner does not guarantee full detection of every log in every file. The detection is executed using [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) and was set up according to research of the common syntax, conventions, tools and packages used in the market. Scanning a repository which includes the unique use of a self-created logging system or deviation of common conventions, might lead to inaccurate results. 
 

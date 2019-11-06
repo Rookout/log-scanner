@@ -14,8 +14,8 @@
 The following list will specify all metrics and metadata contained in the Rookout Log Scanner main output file - `outputs/output.csv` :
 
 * ***Repository_URL*** - The original URL of the repository, as supplied in [inputs/repositories.txt file](https://github.com/Rookout/log-scanner/tree/master/inputs/repositories.txt).
-* ***Project_Name*** - The name of the repository, extracted from the URL. https://github.com/Rookout/**log-scanner**
-* ***Creator*** - The creator of the repository, extracted from the URL. https://github.com/**Rookout**/log-scanner
+* ***Project_Name*** - The name of the repository, extracted from the URL. htt<span>ps://github</span>.com/Rookout/**log-scanner**
+* ***Creator*** - The creator of the repository, extracted from the URL. htt<span>ps://github</span>.com/**Rookout**/log-scanner
 * ***Organization_or_User*** - The type of the repository creator, either **Organization** or private **User**
 * ***Contributors_Count*** - The numeric amount of the repository's contributors
 * ***Main_Language*** - The main programming language used in the repository, as specified in Github.
@@ -43,5 +43,8 @@ The output file `outputs/logs_strings_word_histogram.csv` contains a histogram s
 
 The values of logs are defined as the actual data which was passed by the log lines and was written between quotation marks. Before entering the histogram, punctuation marks, numbers, single-character words, and words with above 15 characters were dropped from the data, and it was refactored to lowercase. In both histograms, values/words that had 5 appearances or less, didn't enter the final output.
 
+## Logs Records
 
-<p style="font-size:xx-small;">(*) The supported languages are currently: Python, Java, JavaScripts, C#.</p>
+The output directory `outputs/all_logs_record` conatains text files, a file for each supplied repository (named with a repository's full name, with the slash changed to double hyphen `rookout--log-scanner`). Each file contains a record of all the log lines the scanner detected.
+
+<p style="font-size:x-small;">(*) The supported languages are currently: Python, Java, JavaScripts, C#.</p>
