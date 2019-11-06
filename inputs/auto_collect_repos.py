@@ -128,9 +128,6 @@ def set_search_request(lang, page, query):
             time.sleep(20)
 
     search_results = json.loads(response.text)
-    if "item" not in search_results:
-        logging.debug(search_results)
-        logging.debug(response.headers)
     return search_results
 
 
