@@ -1,0 +1,10 @@
+mit
+apache-2.0
+gpl-3.0
+agpl-3.0
+lgpl-3.0
+mpl-2.0
+unlicense
+isc
+bsd-2-clause
+bsd-3-clause

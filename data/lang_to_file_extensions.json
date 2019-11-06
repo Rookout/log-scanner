@@ -1,0 +1,1567 @@
+{
+    "ABAP": [
+        "abap"
+    ],
+    "AGS Script": [
+        "asc",
+        "ash"
+    ],
+    "AMPL": [
+        "ampl",
+        "mod"
+    ],
+    "ANTLR": [
+        "g4"
+    ],
+    "APL": [
+        "apl",
+        "dyalog"
+    ],
+    "ASP": [
+        "asp",
+        "asax",
+        "ascx",
+        "ashx",
+        "asmx",
+        "aspx",
+        "axd"
+    ],
+    "ATS": [
+        "dats",
+        "hats",
+        "sats"
+    ],
+    "ActionScript": [
+        "as"
+    ],
+    "Ada": [
+        "adb",
+        "ada",
+        "ads"
+    ],
+    "Agda": [
+        "agda"
+    ],
+    "Alloy": [
+        "als"
+    ],
+    "AppleScript": [
+        "applescript",
+        "scpt"
+    ],
+    "Arc": [
+        "arc"
+    ],
+    "Arduino": [
+        "ino"
+    ],
+    "AspectJ": [
+        "aj"
+    ],
+    "Assembly": [
+        "asm",
+        "a51",
+        "nasm"
+    ],
+    "Augeas": [
+        "aug"
+    ],
+    "AutoHotkey": [
+        "ahk",
+        "ahkl"
+    ],
+    "AutoIt": [
+        "au3"
+    ],
+    "Awk": [
+        "awk",
+        "auk",
+        "gawk",
+        "mawk",
+        "nawk"
+    ],
+    "Batchfile": [
+        "bat",
+        "cmd"
+    ],
+    "Befunge": [
+        "befunge"
+    ],
+    "Bison": [
+        "bison"
+    ],
+    "BlitzBasic": [
+        "bb",
+        "decls"
+    ],
+    "BlitzMax": [
+        "bmx"
+    ],
+    "Bluespec": [
+        "bsv"
+    ],
+    "Boo": [
+        "boo"
+    ],
+    "Brightscript": [
+        "brs"
+    ],
+    "Bro": [
+        "bro"
+    ],
+    "C": [
+        "c",
+        "cats",
+        "idc",
+        "w"
+    ],
+    "C#": [
+        "cs",
+        "cake",
+        "cshtml",
+        "csx"
+    ],
+    "C++": [
+        "cpp",
+        "c++",
+        "cc",
+        "cp",
+        "cxx",
+        "h++",
+        "hh",
+        "hpp",
+        "hxx",
+        "inl",
+        "ipp",
+        "tcc",
+        "tpp"
+    ],
+    "C2hs Haskell": [
+        "chs"
+    ],
+    "CLIPS": [
+        "clp"
+    ],
+    "CMake": [
+        "cmake",
+        "cmake.in"
+    ],
+    "COBOL": [
+        "cob",
+        "cbl",
+        "ccp",
+        "cobol",
+        "cpy"
+    ],
+    "Cap'n Proto": [
+        "capnp"
+    ],
+    "CartoCSS": [
+        "mss"
+    ],
+    "Ceylon": [
+        "ceylon"
+    ],
+    "Chapel": [
+        "chpl"
+    ],
+    "ChucK": [
+        "ck"
+    ],
+    "Cirru": [
+        "cirru"
+    ],
+    "Clarion": [
+        "clw"
+    ],
+    "Clean": [
+        "icl",
+        "dcl"
+    ],
+    "Click": [
+        "click"
+    ],
+    "Clojure": [
+        "clj",
+        "boot",
+        "cl2",
+        "cljc",
+        "cljs",
+        "cljs.hl",
+        "cljscm",
+        "cljx",
+        "hic"
+    ],
+    "CoffeeScript": [
+        "coffee",
+        "_coffee",
+        "cjsx",
+        "cson",
+        "iced"
+    ],
+    "ColdFusion": [
+        "cfm",
+        "cfml"
+    ],
+    "ColdFusion CFC": [
+        "cfc"
+    ],
+    "Lisp": [
+        "lisp",
+        "asd",
+        "lsp",
+        "ny",
+        "podsl",
+        "sexp"
+    ],
+    "OpenCL": [
+        "cl",
+        "opencl"
+    ],
+    "Lex": [
+        "l",
+        "lex"
+    ],
+    "Component Pascal": [
+        "cps"
+    ],
+    "Coq": [
+        "coq",
+        "v"
+    ],
+    "Crystal": [
+        "cr"
+    ],
+    "Cucumber": [
+        "feature"
+    ],
+    "Cuda": [
+        "cu",
+        "cuh"
+    ],
+    "Cycript": [
+        "cy"
+    ],
+    "Python": [
+        "pyx",
+        "pxd",
+        "pxi",
+        "py",
+        "bzl",
+        "gyp",
+        "lmi",
+        "pyde",
+        "pyp",
+        "pyt",
+        "pyw",
+        "tac",
+        "wsgi",
+        "xpy"
+    ],
+    "D": [
+        "d",
+        "di"
+    ],
+    "DIGITAL Command Language": [
+        "com"
+    ],
+    "DM": [
+        "dm"
+    ],
+    "Dart": [
+        "dart"
+    ],
+    "Dogescript": [
+        "djs"
+    ],
+    "Dylan": [
+        "dylan",
+        "dyl",
+        "intr",
+        "lid"
+    ],
+    "E": [
+        "E"
+    ],
+    "ECL": [
+        "ecl",
+        "eclxml"
+    ],
+    "Eiffel": [
+        "e"
+    ],
+    "Elixir": [
+        "ex",
+        "exs"
+    ],
+    "Elm": [
+        "elm"
+    ],
+    "Emacs Lisp": [
+        "el",
+        "emacs",
+        "emacs.desktop"
+    ],
+    "EmberScript": [
+        "em",
+        "emberscript"
+    ],
+    "Erlang": [
+        "erl",
+        "escript",
+        "hrl",
+        "xrl",
+        "yrl"
+    ],
+    "JavaScript": [
+        "es",
+        "frag",
+        "gs",
+        "js",
+        "_js",
+        "bones",
+        "es6",
+        "jake",
+        "jsb",
+        "jscad",
+        "jsfl",
+        "jsm",
+        "jss",
+        "njs",
+        "pac",
+        "sjs",
+        "ssjs",
+        "sublime-build",
+        "sublime-commands",
+        "sublime-completions",
+        "sublime-keymap",
+        "sublime-macro",
+        "sublime-menu",
+        "sublime-mousemap",
+        "sublime-project",
+        "sublime-settings",
+        "sublime-theme",
+        "sublime-workspace",
+        "sublime_metrics",
+        "sublime_session",
+        "xsjs",
+        "xsjslib",
+        "ts",
+        "tsx"
+    ],
+    "F#": [
+        "fs",
+        "fsi",
+        "fsx"
+    ],
+    "HLSL": [
+        "fx",
+        "hlsl",
+        "fxh",
+        "hlsli"
+    ],
+    "FLUX": [
+        "flux"
+    ],
+    "FORTRAN": [
+        "f90",
+        "f",
+        "f03",
+        "f08",
+        "f77",
+        "f95",
+        "for",
+        "fpp"
+    ],
+    "Factor": [
+        "factor"
+    ],
+    "Fancy": [
+        "fy",
+        "fancypack"
+    ],
+    "Fantom": [
+        "fan"
+    ],
+    "Forth": [
+        "fth",
+        "4th",
+        "forth",
+        "frt"
+    ],
+    "Frege": [
+        "fr"
+    ],
+    "FreeMarker": [
+        "ftl"
+    ],
+    "GAMS": [
+        "gms"
+    ],
+    "GAP": [
+        "g",
+        "gap",
+        "gi"
+    ],
+    "GDScript": [
+        "gd"
+    ],
+    "GAS": [
+        "s"
+    ],
+    "MAXScript": [
+        "ms",
+        "mcr"
+    ],
+    "GLSL": [
+        "glsl",
+        "fp",
+        "frg",
+        "fsh",
+        "fshader",
+        "geo",
+        "geom",
+        "glslv",
+        "gshader",
+        "shader",
+        "vert",
+        "vrx",
+        "vsh",
+        "vshader"
+    ],
+    "Game Maker Language": [
+        "gml"
+    ],
+    "Genshi": [
+        "kid"
+    ],
+    "Gentoo Ebuild": [
+        "ebuild"
+    ],
+    "Gentoo Eclass": [
+        "eclass"
+    ],
+    "Glyph": [
+        "glf"
+    ],
+    "Gnuplot": [
+        "gp",
+        "gnu",
+        "gnuplot",
+        "plot",
+        "plt"
+    ],
+    "Go": [
+        "go"
+    ],
+    "Golo": [
+        "golo"
+    ],
+    "Gosu": [
+        "gst",
+        "gsx",
+        "vark"
+    ],
+    "Grace": [
+        "grace"
+    ],
+    "Grammatical Framework": [
+        "gf"
+    ],
+    "Groovy": [
+        "groovy",
+        "grt",
+        "gtpl",
+        "gvy"
+    ],
+    "Groovy Server Pages": [
+        "gsp"
+    ],
+    "HCL": [
+        "hcl",
+        "tf"
+    ],
+    "PHP": [
+        "php",
+        "aw",
+        "ctp",
+        "php3",
+        "php4",
+        "php5",
+        "phps",
+        "phpt"
+    ],
+    "Harbour": [
+        "hb"
+    ],
+    "Haskell": [
+        "hs",
+        "hsc"
+    ],
+    "Haxe": [
+        "hx",
+        "hxsl"
+    ],
+    "Hy": [
+        "hy"
+    ],
+    "IDL": [
+        "pro",
+        "dlm"
+    ],
+    "IGOR Pro": [
+        "ipf"
+    ],
+    "Idris": [
+        "idr",
+        "lidr"
+    ],
+    "Inform 7": [
+        "ni",
+        "i7x"
+    ],
+    "Inno Setup": [
+        "iss"
+    ],
+    "Io": [
+        "io"
+    ],
+    "Ioke": [
+        "ik"
+    ],
+    "Isabelle": [
+        "thy"
+    ],
+    "J": [
+        "ijs"
+    ],
+    "JFlex": [
+        "flex",
+        "jflex"
+    ],
+    "JSONiq": [
+        "jq"
+    ],
+    "JSX": [
+        "jsx"
+    ],
+    "Objective-J": [
+        "j",
+        "sj"
+    ],
+    "Java": [
+        "java"
+    ],
+    "Java Server Pages": [
+        "jsp"
+    ],
+    "Julia": [
+        "jl"
+    ],
+    "KRL": [
+        "krl"
+    ],
+    "KiCad": [
+        "sch",
+        "brd",
+        "kicad_pcb"
+    ],
+    "Kotlin": [
+        "kt",
+        "ktm",
+        "kts"
+    ],
+    "LFE": [
+        "lfe"
+    ],
+    "LLVM": [
+        "ll"
+    ],
+    "LOLCODE": [
+        "lol"
+    ],
+    "LSL": [
+        "lsl",
+        "lslp"
+    ],
+    "LabVIEW": [
+        "lvproj"
+    ],
+    "Lasso": [
+        "lasso",
+        "las",
+        "lasso8",
+        "lasso9",
+        "ldml"
+    ],
+    "Lean": [
+        "lean",
+        "hlean"
+    ],
+    "LilyPond": [
+        "ly",
+        "ily"
+    ],
+    "Matlab": [
+        "m",
+        "matlab"
+    ],
+    "Literate Agda": [
+        "lagda"
+    ],
+    "Literate CoffeeScript": [
+        "litcoffee"
+    ],
+    "Literate Haskell": [
+        "lhs"
+    ],
+    "Logos": [
+        "xm",
+        "x",
+        "xi"
+    ],
+    "Logtalk": [
+        "lgt",
+        "logtalk"
+    ],
+    "LookML": [
+        "lookml"
+    ],
+    "Lua": [
+        "lua",
+        "nse",
+        "pd_lua",
+        "rbxs",
+        "wlua"
+    ],
+    "M": [
+        "mumps"
+    ],
+    "M4": [
+        "m4"
+    ],
+    "MUF": [
+        "muf"
+    ],
+    "Makefile": [
+        "mak",
+        "mk",
+        "mkfile"
+    ],
+    "Mako": [
+        "mako",
+        "mao"
+    ],
+    "Mathematica": [
+        "mathematica",
+        "cdf",
+        "ma",
+        "mt",
+        "nb",
+        "nbp",
+        "wl",
+        "wlt"
+    ],
+    "Max": [
+        "maxpat",
+        "maxhelp",
+        "maxproj",
+        "mxt",
+        "pat"
+    ],
+    "Moocode": [
+        "moo"
+    ],
+    "Metal": [
+        "metal"
+    ],
+    "MiniD": [
+        "minid"
+    ],
+    "Mirah": [
+        "druby",
+        "duby",
+        "mir",
+        "mirah"
+    ],
+    "Modelica": [
+        "mo"
+    ],
+    "Module Management System": [
+        "mms",
+        "mmk"
+    ],
+    "Monkey": [
+        "monkey"
+    ],
+    "MoonScript": [
+        "moon"
+    ],
+    "Myghty": [
+        "myt"
+    ],
+    "NCL": [
+        "ncl"
+    ],
+    "NSIS": [
+        "nsi",
+        "nsh"
+    ],
+    "Nemerle": [
+        "n"
+    ],
+    "NetLinx": [
+        "axs",
+        "axi"
+    ],
+    "NetLinx+ERB": [
+        "axs.erb",
+        "axi.erb"
+    ],
+    "NetLogo": [
+        "nlogo"
+    ],
+    "NewLisp": [
+        "nl"
+    ],
+    "Nimrod": [
+        "nim",
+        "nimrod"
+    ],
+    "Nit": [
+        "nit"
+    ],
+    "Nix": [
+        "nix"
+    ],
+    "Nu": [
+        "nu"
+    ],
+    "NumPy": [
+        "numpy",
+        "numpyw",
+        "numsc"
+    ],
+    "OCaml": [
+        "ml",
+        "eliom",
+        "eliomi",
+        "ml4",
+        "mli",
+        "mll",
+        "mly"
+    ],
+    "Objective-C++": [
+        "mm"
+    ],
+    "Omgrofl": [
+        "omgrofl"
+    ],
+    "Opa": [
+        "opa"
+    ],
+    "Opal": [
+        "opal"
+    ],
+    "OpenEdge ABL": [
+        "p"
+    ],
+    "OpenSCAD": [
+        "scad"
+    ],
+    "Ox": [
+        "ox",
+        "oxh",
+        "oxo"
+    ],
+    "Oxygene": [
+        "oxygene"
+    ],
+    "Oz": [
+        "oz"
+    ],
+    "PAWN": [
+        "pwn"
+    ],
+    "SQL": [
+        "pls",
+        "pck",
+        "pkb",
+        "pks",
+        "plb",
+        "SQL",
+        "sql",
+        "db2",
+        "cql",
+        "ddl",
+        "prc",
+        "tab",
+        "udf",
+        "viw"
+    ],
+    "POV-Ray SDL": [
+        "pov"
+    ],
+    "Pan": [
+        "pan"
+    ],
+    "Papyrus": [
+        "psc"
+    ],
+    "Parrot": [
+        "parrot"
+    ],
+    "Parrot Assembly": [
+        "pasm"
+    ],
+    "Parrot Internal Representation": [
+        "pir"
+    ],
+    "Pascal": [
+        "pas",
+        "dfm",
+        "dpr",
+        "lpr",
+        "pp"
+    ],
+    "Perl": [
+        "pl",
+        "al",
+        "cgi",
+        "perl",
+        "ph",
+        "plx",
+        "pm",
+        "pod",
+        "psgi",
+        "6pl",
+        "6pm",
+        "nqp",
+        "p6",
+        "p6l",
+        "p6m",
+        "pl6",
+        "pm6"
+    ],
+    "Turing": [
+        "t",
+        "tu"
+    ],
+    "PigLatin": [
+        "pig"
+    ],
+    "Pike": [
+        "pike",
+        "pmod"
+    ],
+    "PogoScript": [
+        "pogo"
+    ],
+    "Pony": [
+        "pony"
+    ],
+    "PowerShell": [
+        "ps1",
+        "psd1",
+        "psm1"
+    ],
+    "Processing": [
+        "pde"
+    ],
+    "Prolog": [
+        "prolog",
+        "yap"
+    ],
+    "Propeller Spin": [
+        "spin"
+    ],
+    "Pure Data": [
+        "pd"
+    ],
+    "PureBasic": [
+        "pb",
+        "pbi"
+    ],
+    "PureScript": [
+        "purs"
+    ],
+    "Ren'Py": [
+        "rpy"
+    ],
+    "QML": [
+        "qml",
+        "qbs"
+    ],
+    "R": [
+        "r",
+        "rd",
+        "rsx"
+    ],
+    "REALbasic": [
+        "rbbas",
+        "rbfrm",
+        "rbmnu",
+        "rbres",
+        "rbtbar",
+        "rbuistate"
+    ],
+    "Racket": [
+        "rkt",
+        "rktd",
+        "rktl",
+        "scrbl"
+    ],
+    "Ragel in Ruby Host": [
+        "rl"
+    ],
+    "Rebol": [
+        "reb",
+        "r2",
+        "r3",
+        "rebol"
+    ],
+    "Red": [
+        "red",
+        "reds"
+    ],
+    "Redcode": [
+        "cw"
+    ],
+    "Rust": [
+        "rs",
+        "rs.in"
+    ],
+    "RenderScript": [
+        "rsh"
+    ],
+    "RobotFramework": [
+        "robot"
+    ],
+    "Rouge": [
+        "rg"
+    ],
+    "Ruby": [
+        "rb",
+        "builder",
+        "gemspec",
+        "god",
+        "irbrc",
+        "jbuilder",
+        "mspec",
+        "pluginspec",
+        "podspec",
+        "rabl",
+        "rake",
+        "rbuild",
+        "rbw",
+        "rbx",
+        "ru",
+        "ruby",
+        "thor",
+        "watchr"
+    ],
+    "SAS": [
+        "sas"
+    ],
+    "SMT": [
+        "smt2",
+        "smt"
+    ],
+    "SQF": [
+        "sqf",
+        "hqf"
+    ],
+    "Sage": [
+        "sage",
+        "sagews"
+    ],
+    "SaltStack": [
+        "sls"
+    ],
+    "Scala": [
+        "scala",
+        "sbt"
+    ],
+    "SuperCollider": [
+        "sc",
+        "scd"
+    ],
+    "Scheme": [
+        "scm",
+        "sld",
+        "sps",
+        "ss"
+    ],
+    "Scilab": [
+        "sci",
+        "sce"
+    ],
+    "Self": [
+        "self"
+    ],
+    "Shell": [
+        "sh",
+        "bash",
+        "bats",
+        "command",
+        "ksh",
+        "sh.in",
+        "tmux",
+        "tool",
+        "zsh"
+    ],
+    "ShellSession": [
+        "sh-session"
+    ],
+    "Shen": [
+        "shen"
+    ],
+    "Slash": [
+        "sl"
+    ],
+    "Smali": [
+        "smali"
+    ],
+    "Smalltalk": [
+        "st"
+    ],
+    "Smarty": [
+        "tpl"
+    ],
+    "SourcePawn": [
+        "sp",
+        "sma"
+    ],
+    "Squirrel": [
+        "nut"
+    ],
+    "Stan": [
+        "stan"
+    ],
+    "Standard ML": [
+        "ML",
+        "fun",
+        "sig",
+        "sml"
+    ],
+    "Stata": [
+        "do",
+        "ado",
+        "doh",
+        "ihlp",
+        "mata",
+        "matah",
+        "sthlp"
+    ],
+    "Swift": [
+        "swift"
+    ],
+    "SystemVerilog": [
+        "sv",
+        "svh",
+        "vh"
+    ],
+    "TXL": [
+        "txl"
+    ],
+    "Tcl": [
+        "tcl",
+        "adp",
+        "tm"
+    ],
+    "Tcsh": [
+        "tcsh",
+        "csh"
+    ],
+    "Thrift": [
+        "thrift"
+    ],
+    "Unified Parallel C": [
+        "upc"
+    ],
+    "Uno": [
+        "uno"
+    ],
+    "UnrealScript": [
+        "uc"
+    ],
+    "UrWeb": [
+        "ur",
+        "urs"
+    ],
+    "VCL": [
+        "vcl"
+    ],
+    "VHDL": [
+        "vhdl",
+        "vhd",
+        "vhf",
+        "vhi",
+        "vho",
+        "vhs",
+        "vht",
+        "vhw"
+    ],
+    "Vala": [
+        "vala",
+        "vapi"
+    ],
+    "Verilog": [
+        "veo"
+    ],
+    "VimL": [
+        "vim"
+    ],
+    "Visual Basic": [
+        "vb",
+        "bas",
+        "frm",
+        "frx",
+        "vba",
+        "vbhtml",
+        "vbs"
+    ],
+    "Volt": [
+        "volt"
+    ],
+    "WebIDL": [
+        "webidl"
+    ],
+    "X10": [
+        "x10"
+    ],
+    "XC": [
+        "xc"
+    ],
+    "XPages": [
+        "xsp-config",
+        "xsp.metadata"
+    ],
+    "XProc": [
+        "xpl",
+        "xproc"
+    ],
+    "XQuery": [
+        "xquery",
+        "xq",
+        "xql",
+        "xqm",
+        "xqy"
+    ],
+    "XS": [
+        "xs"
+    ],
+    "XSLT": [
+        "xslt",
+        "xsl"
+    ],
+    "Xojo": [
+        "xojo_code",
+        "xojo_menu",
+        "xojo_report",
+        "xojo_script",
+        "xojo_toolbar",
+        "xojo_window"
+    ],
+    "Xtend": [
+        "xtend"
+    ],
+    "Yacc": [
+        "y",
+        "yacc",
+        "yy"
+    ],
+    "Zephir": [
+        "zep"
+    ],
+    "Zimpl": [
+        "zimpl",
+        "zmpl",
+        "zpl"
+    ],
+    "eC": [
+        "ec",
+        "eh"
+    ],
+    "fish": [
+        "fish"
+    ],
+    "mupad": [
+        "mu"
+    ],
+    "nesC": [
+        "nc"
+    ],
+    "ooc": [
+        "ooc"
+    ],
+    "wisp": [
+        "wisp"
+    ],
+    "xBase": [
+        "prg",
+        "prw"
+    ],
+    "API Blueprint": [
+        "apib"
+    ],
+    "ApacheConf": [
+        "apacheconf"
+    ],
+    "C-ObjDump": [
+        "c-objdump"
+    ],
+    "CSS": [
+        "css"
+    ],
+    "CSV": [
+        "csv"
+    ],
+    "Cpp-ObjDump": [
+        "cppobjdump",
+        "c++-objdump",
+        "c++objdump",
+        "cpp-objdump",
+        "cxx-objdump"
+    ],
+    "D-ObjDump": [
+        "d-objdump"
+    ],
+    "DNS Zone": [
+        "zone",
+        "arpa"
+    ],
+    "Darcs Patch": [
+        "darcspatch",
+        "dpatch"
+    ],
+    "Diff": [
+        "diff",
+        "patch"
+    ],
+    "Dockerfile": [
+        "dockerfile"
+    ],
+    "Ecere Projects": [
+        "epj"
+    ],
+    "Formatted": [
+        "eam.fs"
+    ],
+    "G-code": [
+        "gco",
+        "gcode"
+    ],
+    "Gradle": [
+        "gradle"
+    ],
+    "GraphQL": [
+        "graphql"
+    ],
+    "Graphviz (DOT)": [
+        "dot",
+        "gv"
+    ],
+    "Groff": [
+        "man",
+        "1",
+        "1in",
+        "1m",
+        "1x",
+        "2",
+        "3",
+        "3in",
+        "3m",
+        "3qt",
+        "3x",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "me",
+        "rno",
+        "roff"
+    ],
+    "HTML": [
+        "html",
+        "htm",
+        "html.hl",
+        "inc",
+        "xht",
+        "xhtml"
+    ],
+    "HTML+Django": [
+        "mustache",
+        "jinja"
+    ],
+    "HTML+EEX": [
+        "eex"
+    ],
+    "HTML+ERB": [
+        "erb",
+        "erb.deface"
+    ],
+    "HTML+PHP": [
+        "phtml"
+    ],
+    "HTTP": [
+        "http"
+    ],
+    "Haml": [
+        "haml",
+        "haml.deface"
+    ],
+    "Handlebars": [
+        "handlebars",
+        "hbs"
+    ],
+    "INI": [
+        "ini",
+        "cfg",
+        "prefs",
+        "properties"
+    ],
+    "IRC log": [
+        "irclog",
+        "weechatlog"
+    ],
+    "JSON": [
+        "json",
+        "geojson",
+        "lock",
+        "topojson"
+    ],
+    "JSON5": [
+        "json5"
+    ],
+    "JSONLD": [
+        "jsonld"
+    ],
+    "Jade": [
+        "jade"
+    ],
+    "Jupyter Notebook": [
+        "ipynb"
+    ],
+    "Kit": [
+        "kit"
+    ],
+    "Latte": [
+        "latte"
+    ],
+    "Less": [
+        "less"
+    ],
+    "Linker Script": [
+        "ld",
+        "lds"
+    ],
+    "Liquid": [
+        "liquid"
+    ],
+    "MTML": [
+        "mtml"
+    ],
+    "Mask": [
+        "mask"
+    ],
+    "Nginx": [
+        "nginxconf"
+    ],
+    "Ninja": [
+        "ninja"
+    ],
+    "ObjDump": [
+        "objdump"
+    ],
+    "Pickle": [
+        "pkl"
+    ],
+    "PostScript": [
+        "ps",
+        "eps"
+    ],
+    "Protocol Buffer": [
+        "proto"
+    ],
+    "Public Key": [
+        "pub"
+    ],
+    "Python traceback": [
+        "pytb"
+    ],
+    "RAML": [
+        "raml"
+    ],
+    "RHTML": [
+        "rhtml"
+    ],
+    "Raw token data": [
+        "raw"
+    ],
+    "SCSS": [
+        "scss"
+    ],
+    "SPARQL": [
+        "sparql",
+        "rq"
+    ],
+    "STON": [
+        "ston"
+    ],
+    "SVG": [
+        "svg"
+    ],
+    "Sass": [
+        "sass"
+    ],
+    "Scaml": [
+        "scaml"
+    ],
+    "Slim": [
+        "slim"
+    ],
+    "Stylus": [
+        "styl"
+    ],
+    "TOML": [
+        "toml"
+    ],
+    "TeX": [
+        "tex",
+        "aux",
+        "bbx",
+        "bib",
+        "cbx",
+        "cls",
+        "dtx",
+        "ins",
+        "lbx",
+        "ltx",
+        "mkii",
+        "mkiv",
+        "mkvi",
+        "sty",
+        "toc"
+    ],
+    "Tea": [
+        "tea"
+    ],
+    "Turtle": [
+        "ttl"
+    ],
+    "Twig": [
+        "twig"
+    ],
+    "Unity3D Asset": [
+        "anim",
+        "asset",
+        "mat",
+        "meta",
+        "prefab",
+        "unity"
+    ],
+    "Vue": [
+        "vue"
+    ],
+    "Web Ontology Language": [
+        "owl"
+    ],
+    "XML": [
+        "xml",
+        "ant",
+        "axml",
+        "ccxml",
+        "clixml",
+        "cproject",
+        "csl",
+        "csproj",
+        "ct",
+        "dita",
+        "ditamap",
+        "ditaval",
+        "dll.config",
+        "dotsettings",
+        "filters",
+        "fsproj",
+        "fxml",
+        "glade",
+        "grxml",
+        "iml",
+        "ivy",
+        "jelly",
+        "jsproj",
+        "kml",
+        "launch",
+        "mdpolicy",
+        "mxml",
+        "nproj",
+        "nuspec",
+        "odd",
+        "osm",
+        "plist",
+        "props",
+        "ps1xml",
+        "psc1",
+        "pt",
+        "rdf",
+        "rss",
+        "scxml",
+        "srdf",
+        "storyboard",
+        "stTheme",
+        "sublime-snippet",
+        "targets",
+        "tmCommand",
+        "tml",
+        "tmLanguage",
+        "tmPreferences",
+        "tmSnippet",
+        "tmTheme",
+        "ui",
+        "urdf",
+        "ux",
+        "vbproj",
+        "vcxproj",
+        "vssettings",
+        "vxml",
+        "wsdl",
+        "wsf",
+        "wxi",
+        "wxl",
+        "wxs",
+        "x3d",
+        "xacro",
+        "xaml",
+        "xib",
+        "xlf",
+        "xliff",
+        "xmi",
+        "xml.dist",
+        "xproj",
+        "xsd",
+        "xul",
+        "zcml"
+    ],
+    "YAML": [
+        "yml",
+        "reek",
+        "rviz",
+        "sublime-syntax",
+        "syntax",
+        "yaml",
+        "yaml-tmlanguage"
+    ],
+    "YANG": [
+        "yang"
+    ],
+    "desktop": [
+        "desktop",
+        "desktop.in"
+    ],
+    "edn": [
+        "edn"
+    ]
+}

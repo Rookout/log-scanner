@@ -1,0 +1,170 @@
+# The following script is separated from the rest of the scanner, and is being run manually only.
+# The script automatically generates a list of repositories, which we later used for the Rookout Logs Report.
+# The script takes the 10,000 most popular (most starred) repositories in Github, which are written in one of the supported languages, and runs few "sanity" tests on them.
+# A repository who entered the final list has passed the following tests:
+#   It is an active repo, which means it had a commit in the last 50 days.
+#   It has an English description which does not contain the words: "learn", "tutorial", "book", "guide", "Examples", "Introduction", "Course"
+#   It has more than 20 files written in the programming language it is tagged under.
+
+import os
+import json
+import datetime
+import time
+import string
+import logging
+
+import requests
+from langdetect import detect
+
+GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
+logging.basicConfig(level=logging.INFO, format="%(levelname)s - %(message)s")
+
+
+def check_if_not_a_code_repo(repo_description, lang, repo_name):
+    if repo_description is None:
+        return True
+
+    if detect(repo_description) != 'en':
+        return True
+
+    # clean discription
+    punctuation = string.punctuation + "0123456789"
+    for char in punctuation:
+        repo_description = repo_description.replace(char, '')
+
+    key_words = ["learn", "learning", "tutorial", "tutorials", "book", "books", "guide", "guides", "Example", "Examples", "Introduction", "Introductions", "Course", "Courses"]
+    for key_word in key_words:
+        if key_word.upper() in repo_description.upper():
+            return True
+
+    minimun_amount_of_code_files = 20
+    api_url = f"https://api.github.com/search/code?q=language:{lang}+repo:{repo_name}"
+    headers = {'Authorization': f'token {GITHUB_TOKEN}'}
+    response = requests.get(api_url, headers=headers)
+    if "X-RateLimit-Remaining" in response.headers:
+        if int(response.headers["X-RateLimit-Remaining"]) == 1:
+            logging.info("waiting 20 seconds in order to avoid search api rate limit")
+            time.sleep(20)
+    else:  # for unknown reason, sometimes the "X-RateLimit-Remaining" header isn't supplied in github's response in is needed to check seperatelly using the api
+        rate_limit_url = "https://api.github.com/rate_limit"
+        headers = {'Authorization': f'token {GITHUB_TOKEN}'}
+        response = requests.get(rate_limit_url, headers=headers)
+        rete_limit_data = json.loads(response.text)
+        if rete_limit_data["resources"]["search"]["remaining"] == 1:
+            logging.info("waiting 20 seconds in order to avoid search api rate limit")
+            time.sleep(20)
+    search_results = json.loads(response.text)
+    if "total_count" not in search_results or search_results["total_count"] < minimun_amount_of_code_files:
+        return True
+
+    return False
+
+
+def handleRepoRateLimit():
+    logging.info("repos api reached its rate limit, waiting for reset...")
+    rate_limit_url = "https://api.github.com/rate_limit"
+    headers = {'Authorization': f'token {GITHUB_TOKEN}'}
+    response = requests.get(rate_limit_url, headers=headers)
+    rete_limit_data = json.loads(response.text)
+    reset_time_stamp = rete_limit_data["rate"]["reset"]
+    waiting_status = True
+    while waiting_status:
+        if time.time() > reset_time_stamp:
+            waiting_status = False
+        else:
+            time_to_wait = datetime.datetime.fromtimestamp(reset_time_stamp) - datetime.datetime.now()
+            logging.info(f"time to reset: {int(time_to_wait.total_seconds())} seconds")
+            time.sleep(30)
+
+
+def check_if_not_active(repo_name):  # check if there were any commits in last 50 days
+    days_limit = 50
+    commit_api_url = os.path.join("https://api.github.com/repos", repo_name, "commits")
+    headers = {
+        'Authorization': 'token %s' % GITHUB_TOKEN
+    }
+    response = requests.get(commit_api_url, headers=headers)
+    if int(response.headers["X-RateLimit-Remaining"]) == 1:
+        handleRepoRateLimit()
+    commit_date = datetime.date.fromisoformat(json.loads(response.text)[0]["commit"]["committer"]["date"][:10])
+    delta = datetime.date.today() - commit_date
+    if delta.days > days_limit:
+        return True
+    return False
+
+
+def sanity_check(repo, lang):
+    if check_if_not_active(repo["full_name"]):
+        return False
+
+    if check_if_not_a_code_repo(repo["description"], lang, repo["full_name"]):
+        return False
+
+    return True
+
+
+def set_search_request(lang, page, query):
+    api_url = os.path.join("https://api.github.com", "search", "repositories")
+    headers = {
+        'Authorization': f'token {GITHUB_TOKEN}'
+    }
+    params = {
+        'q': f'{query} language:{lang}',
+        'sort': 'stars',
+        'order': 'desc',
+        'page': str(page),
+        'per_page': '100'
+    }
+    response = requests.get(api_url, params=params, headers=headers)
+    if int(response.headers["X-RateLimit-Remaining"]) == 1:
+        logging.info("waiting 20 seconds in order to avoid search rate limit")
+        time.sleep(20)
+    search_results = json.loads(response.text)
+    return search_results
+
+
+def collect_repos():
+    # get supported langs list
+    output = []
+    with open(os.path.join("data", "regex_logs.json")) as file_content:
+        langs = json.loads(file_content.read()).keys()
+
+    # modify the wished size of list to fit the github api. calc how many response pages needed per language.
+    wished_list_size = 16000
+    addition = wished_list_size % (len(langs) * 100)
+    wished_list_size += addition
+    pages_per_lang = int(wished_list_size/len(langs)/100)
+
+    for lang in langs:
+        query = ""
+        page_reduce_amount = 0
+        for i in range(1, pages_per_lang + 1, 1):
+            page = i - page_reduce_amount
+            search_results = set_search_request(lang, page, query)
+
+            for index, repo in enumerate(search_results['items']):
+                try:
+                    check = sanity_check(repo, lang)
+                except KeyboardInterrupt:
+                    quit()
+                except Exception as e:
+                    logging.error(f"!!!!!! skipped {index + 1} {repo['full_name']}")
+                    logging.error(e)
+                    continue
+                if check:
+                    output.append(repo['html_url'])
+                logging.info(f"finished {index + 1} in {lang} page {page + page_reduce_amount}")
+                if page == 10 and index == 99:
+                    last_repo_stars = repo["stargazers_count"]
+                    query = f"stars:<{last_repo_stars}"
+                    page_reduce_amount = i
+
+    output = list(set(output))  # remove duplicates
+
+    with open(os.path.join("inputs", "generated_repositories_list.txt"), 'w') as output_file:
+        for repo in output:
+            output_file.write(repo + "\n")
+
+
+if __name__ == "__main__":
+    collect_repos()

@@ -1,0 +1,36 @@
+{
+    "Error": [
+        "(?i)err",
+        "(?i)exception",
+        "(?i)fail",
+        "(?i)monitorable"
+    ],
+    "Critical": [
+        "(?i)crit",
+        "(?i)alert",
+        "(?i)emerg",
+        "(?i)fatal",
+        "(?i)severe",
+        "(?i)unexpected"
+    ],
+    "Warning": [
+        "(?i)warn",
+        "(?i)high"
+    ],
+    "Debug": [
+        "(?i)debug",
+        "(?i)trace",
+        "(?i)verbose",
+        "(?i)silly",
+        "(?i)fine",
+        "(?i)spam"
+    ],
+    "Info": [
+        "(?i)info",
+        "(?i)notice",
+        "(?i)message",
+        "(?i)success",
+        "(?i)normal",
+        "(?i)medium"
+    ]
+}
