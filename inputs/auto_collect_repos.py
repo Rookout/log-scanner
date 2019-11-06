@@ -120,6 +120,8 @@ def set_search_request(lang, page, query):
         logging.info("waiting 20 seconds in order to avoid search rate limit")
         time.sleep(20)
     search_results = json.loads(response.text)
+    if "item" not in search_results:
+        print(search_results)
     return search_results
 
 
