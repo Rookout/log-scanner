@@ -42,7 +42,7 @@ def check_if_not_a_code_repo(repo_description, lang, repo_name):
     headers = {'Authorization': f'token {GITHUB_TOKEN}'}
     response = requests.get(api_url, headers=headers)
     if "X-RateLimit-Remaining" in response.headers:
-        if int(response.headers["X-RateLimit-Remaining"]) == 1:
+        if int(response.headers["X-RateLimit-Remaining"]) in [1, 0]:
             logging.info("waiting 20 seconds in order to avoid search api rate limit")
             time.sleep(20)
     else:  # for unknown reason, sometimes the "X-RateLimit-Remaining" header isn't supplied in github's response in is needed to check seperatelly using the api
@@ -105,9 +105,7 @@ def sanity_check(repo, lang):
 
 def set_search_request(lang, page, query):
     api_url = os.path.join("https://api.github.com", "search", "repositories")
-    headers = {
-        'Authorization': f'token {GITHUB_TOKEN}'
-    }
+    headers = {'Authorization': f'token {GITHUB_TOKEN}'}
     params = {
         'q': f'{query} language:{lang}',
         'sort': 'stars',
@@ -116,12 +114,23 @@ def set_search_request(lang, page, query):
         'per_page': '100'
     }
     response = requests.get(api_url, params=params, headers=headers)
-    if int(response.headers["X-RateLimit-Remaining"]) == 1:
-        logging.info("waiting 20 seconds in order to avoid search rate limit")
-        time.sleep(20)
+    if "X-RateLimit-Remaining" in response.headers:
+        if int(response.headers["X-RateLimit-Remaining"]) in [1, 0]:
+            logging.info("waiting 20 seconds in order to avoid search api rate limit")
+            time.sleep(20)
+    else:  # for unknown reason, sometimes the "X-RateLimit-Remaining" header isn't supplied in github's response in is needed to check seperatelly using the api
+        rate_limit_url = "https://api.github.com/rate_limit"
+        headers = {'Authorization': f'token {GITHUB_TOKEN}'}
+        response = requests.get(rate_limit_url, headers=headers)
+        rete_limit_data = json.loads(response.text)
+        if rete_limit_data["resources"]["search"]["remaining"] in [1, 0]:
+            logging.info("waiting 20 seconds in order to avoid search api rate limit")
+            time.sleep(20)
+
     search_results = json.loads(response.text)
     if "item" not in search_results:
-        print(search_results)
+        logging.debug(search_results)
+        logging.debug(response.headers)
     return search_results
 
 
