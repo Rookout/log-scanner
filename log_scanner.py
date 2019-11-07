@@ -13,6 +13,17 @@ from libs.build_log_string_histogram import build_log_string_histogram
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s - %(message)s")
 
+
+def start_with_clean_sheet():
+    with open(os.path.join("data", "logs_strings.txt"), 'w') as logs_data_histogram_file:
+        logs_data_histogram_file.write("")  # create empty file for later appending
+
+    all_logs_record = os.path.join("outputs", "all_logs_record")  # delete the contents of outputs/all_logs_record  directory.
+    if (os.path.exists(all_logs_record)):
+        shutil.rmtree(all_logs_record)
+    os.mkdir(os.path.join("outputs", "all_logs_record"))
+
+
 def extract_repos_list():
     repos_url = []
     with open(os.path.join("inputs", "repositories.txt"), 'r') as repos_txt:
@@ -24,9 +35,10 @@ def extract_repos_list():
 
 def handle_repo(repo):
     # optional: define your ROOKOUT_TOKEN as an environment variable and use Rookout
-    import rook
     ROOKOUT_TOKEN = os.environ.get("ROOKOUT_TOKEN")
-    rook.start(token=ROOKOUT_TOKEN)
+    if ROOKOUT_TOKEN:
+        import rook
+        rook.start()
 
     index, repo_url = repo
     try:
@@ -94,13 +106,7 @@ def delete_leftovers():
 
 
 def log_scanner_main():
-    with open(os.path.join("data", "logs_strings.txt"), 'w') as logs_data_histogram_file:
-        logs_data_histogram_file.write("")  # create empty file for later appending
-
-    all_logs_record = os.path.join("outputs", "all_logs_record")  # delete the contents of outputs/all_logs_record  directory.
-    if (os.path.exists(all_logs_record)):
-        shutil.rmtree(all_logs_record)
-    os.mkdir(os.path.join("outputs", "all_logs_record"))
+    start_with_clean_sheet()
 
     # multiprocess
     repos_url = extract_repos_list()

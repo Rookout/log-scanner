@@ -1,10 +1,10 @@
 # The following script is separated from the rest of the scanner, and is being run manually only.
-# The script automatically generates a list of repositories, which we later used for the Rookout Logs Report.
-# The script takes the 10,000 most popular (most starred) repositories in Github, which are written in one of the supported languages, and runs few "sanity" tests on them.
+# The script automatically generates a list of repositories, which is later used for the Rookout Logs Report.
+# The script takes the 30,000 most popular (most starred) repositories in Github, which are written in one of the supported languages, and runs few "sanity" checks on them.
 # A repository who entered the final list has passed the following tests:
 #   It is an active repo, which means it had a commit in the last 50 days.
-#   It has an English description which does not contain the words: "learn", "tutorial", "book", "guide", "Examples", "Introduction", "Course"
-#   It has more than 20 files written in the programming language it is tagged under.
+#   It has an English description which does not contain the words: "learn", "tutorial", "book", "guide", "Examples", "Introduction", "Course".
+#   It has more than 15 files written in the main programming language it is tagged under.
 
 import os
 import json
@@ -37,7 +37,7 @@ def check_if_not_a_code_repo(repo_description, lang, repo_name):
         if key_word.upper() in repo_description.upper():
             return True
 
-    minimun_amount_of_code_files = 10
+    minimun_amount_of_code_files = 15
     api_url = f"https://api.github.com/search/code?q=language:{lang}+repo:{repo_name}"
     headers = {'Authorization': f'token {GITHUB_TOKEN}'}
     response = requests.get(api_url, headers=headers)
