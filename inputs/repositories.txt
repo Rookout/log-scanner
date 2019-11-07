@@ -1,1 +1,3 @@
 https://github.com/Rookout/explorook
+https://github.com/Rookout/tutorial-java
+https://github.com/Rookout/tutorial-nodejs

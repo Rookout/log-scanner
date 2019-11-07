@@ -37,7 +37,7 @@ def check_if_not_a_code_repo(repo_description, lang, repo_name):
         if key_word.upper() in repo_description.upper():
             return True
 
-    minimun_amount_of_code_files = 20
+    minimun_amount_of_code_files = 10
     api_url = f"https://api.github.com/search/code?q=language:{lang}+repo:{repo_name}"
     headers = {'Authorization': f'token {GITHUB_TOKEN}'}
     response = requests.get(api_url, headers=headers)
@@ -138,7 +138,7 @@ def collect_repos():
         langs = json.loads(file_content.read()).keys()
 
     # modify the wished size of list to fit the github api. calc how many response pages needed per language.
-    wished_list_size = 16000
+    wished_list_size = 400
     addition = wished_list_size % (len(langs) * 100)
     wished_list_size += addition
     pages_per_lang = int(wished_list_size/len(langs)/100)

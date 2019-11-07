@@ -38,7 +38,7 @@ def handle_repo(repo):
         logging.info(f"finished repo number {index + 1} with {repo_log_metrics['logs_total_amount']} logs detected")
         return repo_log_metrics, metadata
     except:
-        logging.error(f"skiping repository number {index + 1} die to an error: {repo_url}")
+        logging.error(f"skiping repository number {index + 1} due to an error: {repo_url}")
         return -1, -1
 
 
@@ -82,7 +82,9 @@ def generate_outputs(metrics_metadata_results):
                 repo_log_metrics["total_logs_devided_by_total_lines"],
                 metadata["count_forks"], metadata["count_stars"], metadata["count_watches"]
             ]
-    df.to_csv(os.path.join("outputs", "output.csv"), index=False)
+    pathToFile = os.path.join("outputs", "output.csv")
+    logging.debug(pathToFile)
+    df.to_csv(pathToFile, index=False)
     build_log_string_histogram()
 
 
