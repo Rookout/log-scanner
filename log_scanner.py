@@ -49,7 +49,7 @@ def handle_repo(repo):
         delete_currently_cloned_repository(current_clone_location)
         logging.info(f"finished repo number {index + 1} with {repo_log_metrics['logs_total_amount']} logs detected")
         return repo_log_metrics, metadata
-    except:
+    except Exception as e:
         logging.error(f"skiping repository number {index + 1} due to an error: {repo_url}")
         return -1, -1
 

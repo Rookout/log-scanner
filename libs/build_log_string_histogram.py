@@ -3,17 +3,6 @@ import string
 import pandas as pd
 
 
-def clean_line(line):  # delete punctuation marks and numbers
-    line = line.lower()
-    line = line.replace('  ', '')
-    punctuation = string.punctuation + "0123456789"
-    line = line.strip()
-    for char in punctuation:
-        line = line.replace(char, '')
-    line = ' '.join(i for i in line.split() if i not in ["s", "fs", "t", "ss", "c", "t", "b", "n", "d", "g", "x"] and len(i) < 15)
-    return line
-
-
 def modify_and_output_histogram(input_histogram, file_name):
     output_histogram = sorted(input_histogram.items(), key=lambda kv: kv[1])
     output_histogram.reverse()
@@ -32,7 +21,7 @@ def build_log_string_histogram():
     line_histogram = {}
     with open(os.path.join("data", "logs_strings.txt"), 'r') as file_content:
         for line in file_content:
-            line = clean_line(line)
+            line = line.strip().lower().replace('  ', ' ')
             if len(line) > 200:
                 continue
             words = line.split(' ')

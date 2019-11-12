@@ -133,3 +133,4 @@ current_clone/
 .idea/
 outputs/*.csv
 outputs/all_logs_record/
+data/logs_strings.txt

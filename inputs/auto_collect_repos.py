@@ -14,7 +14,7 @@ import string
 import logging
 
 import requests
-from langdetect import detect
+import langid
 
 GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
 logging.basicConfig(level=logging.INFO, format="%(levelname)s - %(message)s")
@@ -24,7 +24,7 @@ def check_if_not_a_code_repo(repo_description, lang, repo_name):
     if repo_description is None:
         return True
 
-    if detect(repo_description) != 'en':
+    if langid.classify(repo_description) != 'en':
         return True
 
     # clean discription
