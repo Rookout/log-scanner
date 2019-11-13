@@ -20,29 +20,7 @@ GITHUB_TOKEN = os.environ['GITHUB_TOKEN']
 logging.basicConfig(level=logging.INFO, format="%(levelname)s - %(message)s")
 
 
-def check_if_not_a_code_repo(repo_description, lang, repo_name):
-    if repo_description is None:
-        return True
-
-    if langid.classify(repo_description)[0] != 'en':
-        return True
-
-    # clean discription
-    punctuation = string.punctuation + "0123456789"
-    for char in punctuation:
-        repo_description = repo_description.replace(char, '')
-
-    key_words = ["learn", "learning", "tutorial", "tutorials", "book", "books", "guide", "guides", "Example", "Examples", "Introduction", "Introductions", "Course", "Courses"]
-    for key_word in key_words:
-        if key_word.upper() in repo_description.upper():
-            return True
-
-    minimun_amount_of_code_files = 15
-    if lang == "C#":
-        lang = "C%23"
-    api_url = f"https://api.github.com/search/code?q=language:{lang}+repo:{repo_name}"
-    headers = {'Authorization': f'token {GITHUB_TOKEN}'}
-    response = requests.get(api_url, headers=headers)
+def handle_search_rate_limit(response):
     if "X-RateLimit-Remaining" in response.headers:
         if int(response.headers["X-RateLimit-Remaining"]) in [1, 0]:
             logging.info("waiting 20 seconds in order to avoid search api rate limit")
@@ -50,19 +28,14 @@ def check_if_not_a_code_repo(repo_description, lang, repo_name):
     else:  # for unknown reason, sometimes the "X-RateLimit-Remaining" header isn't supplied in github's response in is needed to check seperatelly using the api
         rate_limit_url = "https://api.github.com/rate_limit"
         headers = {'Authorization': f'token {GITHUB_TOKEN}'}
-        response = requests.get(rate_limit_url, headers=headers)
-        rete_limit_data = json.loads(response.text)
-        if rete_limit_data["resources"]["search"]["remaining"] == 1:
+        r = requests.get(rate_limit_url, headers=headers)
+        rete_limit_data = json.loads(r.text)
+        if rete_limit_data["resources"]["search"]["remaining"] in [1, 0]:
             logging.info("waiting 20 seconds in order to avoid search api rate limit")
             time.sleep(20)
-    search_results = json.loads(response.text)
-    if "total_count" not in search_results or search_results["total_count"] < minimun_amount_of_code_files:
-        return True
-
-    return False
 
 
-def handleRepoRateLimit():
+def handle_repo_rate_limit():
     logging.info("repos api reached its rate limit, waiting for reset...")
     rate_limit_url = "https://api.github.com/rate_limit"
     headers = {'Authorization': f'token {GITHUB_TOKEN}'}
@@ -79,7 +52,48 @@ def handleRepoRateLimit():
             time.sleep(30)
 
 
-def check_if_not_active(repo_name):  # check if there were any commits in last 50 days
+def check_if_not_a_code_repo(repo_description, lang, repo_name, index):
+    if repo_description is None:
+        logging.info(f"repo number {index} ({repo_name}) was denied due to empty description")
+        return True
+
+    description_language = langid.classify(repo_description)[0]
+    if description_language != 'en':
+        logging.info(f"repo number {index} ({repo_name}) was denied due to description language - {description_language}")
+        return True
+
+    # clean discription
+    punctuation = string.punctuation + "0123456789"
+    for char in punctuation:
+        repo_description = repo_description.replace(char, '')
+
+    key_words = ["learn", "learning", "tutorial", "tutorials", "book", "books", "guide", "guides", "Example", "Examples", "Introduction", "Introductions", "Course", "Courses"]
+    for key_word in key_words:
+        if key_word.upper() in repo_description.upper():
+            logging.info(f"repo number {index} ({repo_name}) was denied due to use of '{key_word}' in the description")
+            return True
+
+    minimun_amount_of_code_files = 15
+    if lang == "C#":
+        lang = "C%23"
+    api_url = f"https://api.github.com/search/code?q=language:{lang}+repo:{repo_name}"
+    headers = {'Authorization': f'token {GITHUB_TOKEN}'}
+    response = requests.get(api_url, headers=headers)
+    handle_search_rate_limit(response)
+    
+    search_results = json.loads(response.text)
+    if "total_count" not in search_results or search_results["total_count"] < minimun_amount_of_code_files:
+        try:
+            logging.info(f"repo number {index} ({repo_name}) was denied due to amount of code files - {search_results['total_count']}")
+        except: # for unknown reasons, Github Search API sometimes doesn't return the total_count correctly. this isn't very common.
+            logging.error(f"no total_count for {api_url}... API results:")
+            logging.error(search_results)
+        return True
+
+    return False
+
+
+def check_if_not_active(repo_name, index):  # check if there were any commits in last 50 days
     days_limit = 50
     commit_api_url = os.path.join("https://api.github.com/repos", repo_name, "commits")
     headers = {
@@ -87,19 +101,20 @@ def check_if_not_active(repo_name):  # check if there were any commits in last 5
     }
     response = requests.get(commit_api_url, headers=headers)
     if int(response.headers["X-RateLimit-Remaining"]) == 1:
-        handleRepoRateLimit()
+        handle_repo_rate_limit()
     commit_date = datetime.date.fromisoformat(json.loads(response.text)[0]["commit"]["committer"]["date"][:10])
     delta = datetime.date.today() - commit_date
     if delta.days > days_limit:
+        logging.info(f"repo number {index} ({repo_name}) was denied because not active - {delta.days} days")
         return True
     return False
 
 
-def sanity_check(repo, lang):
-    if check_if_not_active(repo["full_name"]):
+def sanity_check(repo, lang, index):
+    if check_if_not_active(repo["full_name"], index):
         return False
 
-    if check_if_not_a_code_repo(repo["description"], lang, repo["full_name"]):
+    if check_if_not_a_code_repo(repo["description"], lang, repo["full_name"], index):
         return False
 
     return True
@@ -116,19 +131,7 @@ def set_search_request(lang, page, query):
         'per_page': '100'
     }
     response = requests.get(api_url, params=params, headers=headers)
-    if "X-RateLimit-Remaining" in response.headers:
-        if int(response.headers["X-RateLimit-Remaining"]) in [1, 0]:
-            logging.info("waiting 20 seconds in order to avoid search api rate limit")
-            time.sleep(20)
-    else:  # for unknown reason, sometimes the "X-RateLimit-Remaining" header isn't supplied in github's response in is needed to check seperatelly using the api
-        rate_limit_url = "https://api.github.com/rate_limit"
-        headers = {'Authorization': f'token {GITHUB_TOKEN}'}
-        response = requests.get(rate_limit_url, headers=headers)
-        rete_limit_data = json.loads(response.text)
-        if rete_limit_data["resources"]["search"]["remaining"] in [1, 0]:
-            logging.info("waiting 20 seconds in order to avoid search api rate limit")
-            time.sleep(20)
-
+    handle_search_rate_limit(response)
     search_results = json.loads(response.text)
     return search_results
 
@@ -144,6 +147,7 @@ def collect_repos():
     addition = wished_list_size % (len(langs) * 100)
     wished_list_size += addition
     pages_per_lang = int(wished_list_size/len(langs)/100)
+    output_len_reducer = 0
 
     for lang in langs:
         query = ""
@@ -154,7 +158,7 @@ def collect_repos():
 
             for index, repo in enumerate(search_results['items']):
                 try:
-                    check = sanity_check(repo, lang)
+                    check = sanity_check(repo, lang, index + 1)
                 except KeyboardInterrupt:
                     quit()
                 except Exception as e:
@@ -163,13 +167,21 @@ def collect_repos():
                     continue
                 if check:
                     output.append(repo['html_url'])
-                    logging.info(f"approved {index + 1} in {lang} page {page + page_reduce_amount}")
-                else:
-                    logging.info(f"denied {index + 1} in {lang} page {page + page_reduce_amount}")
+                    logging.info(f"repo number {index + 1} ({repo['full_name']}) was approved --- {lang} page {page + page_reduce_amount}")
+
                 if page == 10 and index == 99:
                     last_repo_stars = repo["stargazers_count"]
                     query = f"stars:<{last_repo_stars}"
                     page_reduce_amount = i
+        
+        logging.info(">>>")
+        logging.info(">>>>>>")
+        logging.info(">>>>>>>>>")
+        logging.info(f"{lang} finished with {len(output) - output_len_reducer} repositories approved")
+        logging.info("<<<<<<<<<")
+        logging.info("<<<<<<")
+        logging.info("<<<")
+        output_len_reducer = len(output)
 
     output = list(set(output))  # remove duplicates
 
