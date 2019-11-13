@@ -21,11 +21,21 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s - %(message)s")
 
 
 def handle_search_rate_limit(response):
+    # if the request triggered the abuse detection mechanism of Github API and response is broken.. wait the 'Retry-After' time and rerun the request.
+    if "message" in json.loads(response.text):
+        retry_after = response.headers["Retry-After"]
+        logging.info(f"triggered Github API's abuse detection mechanism. waiting {retry_after} seconds")
+        time.sleep(int(retry_after))
+        new_response = requests.get(response.request.url, headers=response.request.headers)
+        return new_response
+
+    # if the request brought me close to rate limit but the response isn't broken - wait and return it as is
     if "X-RateLimit-Remaining" in response.headers:
         if int(response.headers["X-RateLimit-Remaining"]) in [1, 0]:
             logging.info("waiting 20 seconds in order to avoid search api rate limit")
             time.sleep(20)
-    else:  # for unknown reason, sometimes the "X-RateLimit-Remaining" header isn't supplied in github's response in is needed to check seperatelly using the api
+        return response
+    else:  # for unknown reason, sometimes the "X-RateLimit-Remaining" header isn't supplied in github's response and it is needed to check seperatelly using the api.
         rate_limit_url = "https://api.github.com/rate_limit"
         headers = {'Authorization': f'token {GITHUB_TOKEN}'}
         r = requests.get(rate_limit_url, headers=headers)
@@ -33,6 +43,7 @@ def handle_search_rate_limit(response):
         if rete_limit_data["resources"]["search"]["remaining"] in [1, 0]:
             logging.info("waiting 20 seconds in order to avoid search api rate limit")
             time.sleep(20)
+        return response
 
 
 def handle_repo_rate_limit():
@@ -70,7 +81,7 @@ def check_if_not_a_code_repo(repo_description, lang, repo_name, index):
     key_words = ["learn", "learning", "tutorial", "tutorials", "book", "books", "guide", "guides", "Example", "Examples", "Introduction", "Introductions", "Course", "Courses"]
     for key_word in key_words:
         if key_word.upper() in repo_description.upper():
-            logging.info(f"repo number {index} ({repo_name}) was denied due to use of '{key_word}' in the description")
+            logging.info(f"repo number {index} ({repo_name}) was denied due to use of prohibited key_word in the description - '{key_word}'")
             return True
 
     minimun_amount_of_code_files = 15
@@ -79,14 +90,14 @@ def check_if_not_a_code_repo(repo_description, lang, repo_name, index):
     api_url = f"https://api.github.com/search/code?q=language:{lang}+repo:{repo_name}"
     headers = {'Authorization': f'token {GITHUB_TOKEN}'}
     response = requests.get(api_url, headers=headers)
-    handle_search_rate_limit(response)
-    
+    response = handle_search_rate_limit(response)
+
     search_results = json.loads(response.text)
     if "total_count" not in search_results or search_results["total_count"] < minimun_amount_of_code_files:
         try:
-            logging.info(f"repo number {index} ({repo_name}) was denied due to amount of code files - {search_results['total_count']}")
-        except: # for unknown reasons, Github Search API sometimes doesn't return the total_count correctly. this isn't very common.
-            logging.error(f"no total_count for {api_url}... API results:")
+            logging.info(f"repo number {index} ({repo_name}) was denied due to amount of code files - {search_results['total_count']} files only")
+        except:
+            logging.error("no total_count")
             logging.error(search_results)
         return True
 
@@ -131,7 +142,7 @@ def set_search_request(lang, page, query):
         'per_page': '100'
     }
     response = requests.get(api_url, params=params, headers=headers)
-    handle_search_rate_limit(response)
+    response = handle_search_rate_limit(response)
     search_results = json.loads(response.text)
     return search_results
 
@@ -143,10 +154,12 @@ def collect_repos():
         langs = json.loads(file_content.read()).keys()
 
     # modify the wished size of list to fit the github api. calc how many response pages needed per language.
-    wished_list_size = 400
+    wished_list_size = 20000
     addition = wished_list_size % (len(langs) * 100)
     wished_list_size += addition
     pages_per_lang = int(wished_list_size/len(langs)/100)
+    
+    langs_division = {}
     output_len_reducer = 0
 
     for lang in langs:
@@ -174,17 +187,15 @@ def collect_repos():
                     query = f"stars:<{last_repo_stars}"
                     page_reduce_amount = i
         
-        logging.info(">>>")
-        logging.info(">>>>>>")
-        logging.info(">>>>>>>>>")
-        logging.info(f"{lang} finished with {len(output) - output_len_reducer} repositories approved")
-        logging.info("<<<<<<<<<")
-        logging.info("<<<<<<")
-        logging.info("<<<")
+        langs_division[lang] = len(output) - output_len_reducer
         output_len_reducer = len(output)
 
-    output = list(set(output))  # remove duplicates
+    logging.info(">>>")
+    for lang in langs_division.keys():
+        logging.info(f"{lang} -- {langs_division[lang]} repositories approved")
+    logging.info("<<<")
 
+    output = list(set(output))  # remove duplicates
     with open(os.path.join("inputs", "generated_repositories_list.txt"), 'w') as output_file:
         for repo in output:
             output_file.write(repo + "\n")
