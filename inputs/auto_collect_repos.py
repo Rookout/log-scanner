@@ -24,7 +24,7 @@ def check_if_not_a_code_repo(repo_description, lang, repo_name):
     if repo_description is None:
         return True
 
-    if langid.classify(repo_description) != 'en':
+    if langid.classify(repo_description)[0] != 'en':
         return True
 
     # clean discription
@@ -38,6 +38,8 @@ def check_if_not_a_code_repo(repo_description, lang, repo_name):
             return True
 
     minimun_amount_of_code_files = 15
+    if lang == "C#":
+        lang = "C%23"
     api_url = f"https://api.github.com/search/code?q=language:{lang}+repo:{repo_name}"
     headers = {'Authorization': f'token {GITHUB_TOKEN}'}
     response = requests.get(api_url, headers=headers)
@@ -138,7 +140,7 @@ def collect_repos():
         langs = json.loads(file_content.read()).keys()
 
     # modify the wished size of list to fit the github api. calc how many response pages needed per language.
-    wished_list_size = 30000
+    wished_list_size = 400
     addition = wished_list_size % (len(langs) * 100)
     wished_list_size += addition
     pages_per_lang = int(wished_list_size/len(langs)/100)
@@ -161,7 +163,9 @@ def collect_repos():
                     continue
                 if check:
                     output.append(repo['html_url'])
-                logging.info(f"finished {index + 1} in {lang} page {page + page_reduce_amount}")
+                    logging.info(f"approved {index + 1} in {lang} page {page + page_reduce_amount}")
+                else:
+                    logging.info(f"denied {index + 1} in {lang} page {page + page_reduce_amount}")
                 if page == 10 and index == 99:
                     last_repo_stars = repo["stargazers_count"]
                     query = f"stars:<{last_repo_stars}"
