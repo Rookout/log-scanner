@@ -1,6 +1,17 @@
 import os
-import string
+import re
 import pandas as pd
+
+def normalize_string_format(line):
+    with open(os.path.join("data", "regex_string_formats.json"), 'r') as file_content:
+        string_formats_json = json.loads(file_content)
+    for regex in string_formats_json:
+        findings = re.findall(regex, line)
+        if len(findings) > 0:
+            for finding in findings:
+                if "{str_format}" not in finding:
+                    line = line.replace(finding, "{str_format}")
+    return line
 
 
 def modify_and_output_histogram(input_histogram, file_name):
@@ -21,6 +32,7 @@ def build_log_string_histogram():
     line_histogram = {}
     with open(os.path.join("data", "logs_strings.txt"), 'r') as file_content:
         for line in file_content:
+            line = normalize_string_format(line)
             line = line.strip().lower().replace('  ', ' ')
             if len(line) > 200:
                 continue
