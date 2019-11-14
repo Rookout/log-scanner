@@ -1,10 +1,11 @@
 import os
+import json
 import re
 import pandas as pd
 
 def normalize_string_format(line):
     with open(os.path.join("data", "regex_string_formats.json"), 'r') as file_content:
-        string_formats_json = json.loads(file_content)
+        string_formats_json = json.loads(file_content.read())
     for regex in string_formats_json:
         findings = re.findall(regex, line)
         if len(findings) > 0:
