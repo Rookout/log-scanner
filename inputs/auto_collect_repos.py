@@ -154,7 +154,7 @@ def collect_repos():
         langs = json.loads(file_content.read()).keys()
 
     # modify the wished size of list to fit the github api. calc how many response pages needed per language.
-    wished_list_size = 20000
+    wished_list_size = 30000
     addition = wished_list_size % (len(langs) * 100)
     wished_list_size += addition
     pages_per_lang = int(wished_list_size/len(langs)/100)
