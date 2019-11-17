@@ -57,7 +57,7 @@ def handle_repo(repo):
 def generate_outputs(metrics_metadata_results):
     df = pd.DataFrame(columns=[
         "Repository_URL", "Project_Name", "Creator",
-        "Organization_or_User", "Contributors", "Is_Open_Source",
+        "Organization_or_User", "Contributors", "License_Yype",
         "Main_Language", "Used_Languages",
         "Total_Amount_of_Logs", "No_Logger_Logs",
         "Debug_Verbosity_Level_Usage",
@@ -79,7 +79,7 @@ def generate_outputs(metrics_metadata_results):
         else:
             df.loc[index] = [
                 metadata["repo_url"], metadata["project_name"], metadata["company/user"],
-                metadata["is_private_or_organization"], metadata["count_contributors"], metadata["is_open_source"],
+                metadata["is_private_or_organization"], metadata["count_contributors"], metadata["license_type"],
                 metadata["main_lang"], metadata["used_langs"],
                 repo_log_metrics["logs_total_amount"], repo_log_metrics["no_logger_logs_amount"],
                 repo_log_metrics["debug_verbosity_level_usage"],

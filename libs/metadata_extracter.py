@@ -17,7 +17,7 @@ def extract_metadata(repo_url, current_clone_location):
         "company/user": user,
         "used_langs": used_langs(current_clone_location),
         "main_lang": repo_data["language"],
-        "is_open_source": is_open_source(repo_data),
+        "license_type": is_open_source(repo_data),
         "is_private_or_organization": repo_data["owner"]["type"],
         "count_forks": repo_data["forks_count"],
         "count_watches": repo_data["subscribers_count"],

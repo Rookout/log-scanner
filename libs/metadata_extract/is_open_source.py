@@ -8,5 +8,5 @@ def is_open_source(repo_data):
     with open(os.path.join("data", "open_source_license.txt"), 'r') as xfile:
         for line in xfile:
             if line.rstrip() == repo_license:
-                return True
-    return False
+                return "open source"
+    return "closed source"
