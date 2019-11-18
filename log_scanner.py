@@ -57,7 +57,7 @@ def handle_repo(repo):
 def generate_outputs(metrics_metadata_results):
     df = pd.DataFrame(columns=[
         "Repository_URL", "Project_Name", "Creator",
-        "Organization_or_User", "Contributors", "License_Yype",
+        "Organization_or_User", "Contributors", "License_Type",
         "Main_Language", "Used_Languages",
         "Total_Amount_of_Logs", "No_Logger_Logs",
         "Debug_Verbosity_Level_Usage",
