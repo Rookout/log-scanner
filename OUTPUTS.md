@@ -41,7 +41,11 @@ You can automatically quick analyse the output you received by running the follo
 ```bash
 python3 outputs/analysis/analysis.py
 ```
-and view the results in a generated text file `output/analysis/analysis.txt`.
+and view the results in a generated text file `output/analysis/analysis.txt`.  
+This script requires [pandas](https://pandas.pydata.org/), so if you do not have it installed, before running the script you'll need to run:
+```bash
+pip install -r outputs/analysis/requirements.txt
+```
 
 ## Histograms
 
