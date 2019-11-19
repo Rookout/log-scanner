@@ -214,4 +214,7 @@ if __name__ == "__main__":
             file_content.write("\n")
 
     print("done")
-    subprocess.call(["open", os.path.join('outputs', 'analysis', 'analysis.txt')])
+    try:
+        subprocess.call(["open", os.path.join('outputs', 'analysis', 'analysis.txt')])
+    except:
+        quit()
