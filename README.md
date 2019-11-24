@@ -31,6 +31,8 @@ git clone https://github.com/Rookout/log-scanner.git
 cd log-scanner
 ```
 
+Make sure you have a [Github Token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
+
 ## Usage
 
 ### Using Docker (recommanded)
@@ -47,7 +49,7 @@ https://github.com/Rookout/tutorial-java
 https://github.com/Rookout/tutorial-nodejs
 ```
 
-3. Run
+3. Run the scanner (don't forget to add [<Your_Github_token>](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line))
 ```bash
 docker run \
     -v `pwd`/inputs:/app/inputs \
@@ -66,9 +68,9 @@ For full details about the outputs, check out [OUTPUTS.md](https://github.com/Ro
 pip install -r requirements.txt
 ```
 
-2. Set your [Github token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) as a local environment variable.
+2. Set [<Your_Github_Token>](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) as a local environment variable.
 ```bash
-export GITHUB_TOKEN="<YOUR_TOKEN_HERE>"
+export GITHUB_TOKEN="<Your_Github_Token>"
 ```
 
 3. Edit the local [inputs/repositories.txt file](https://github.com/Rookout/log-scanner/tree/master/inputs/repositories.txt) to include all the repositories you wish to scan, with a newline between them. for example:
@@ -88,7 +90,7 @@ For full details about the outputs, check out [OUTPUTS.md](https://github.com/Ro
 
 ## Disclaimers
 
-Rookout Log Scanner communicates widely with the [Github api](https://developer.github.com/v3/repos/) and due to that fact it currently doesn't support repositories that are stored on different version control repository hosting services like Bitbucket, Gitlab, Coding, etc.
+Rookout Log Scanner communicates widely with the [Github api](https://developer.github.com/v3/repos/) and due to that fact it currently doesn't support repositories that are stored on different version control repository hosting services like Bitbucket, Gitlab, Coding, etc. Due to that fact, Github token is a Prerequisite for running the project, as well as its essentiality for accessibility to the user's private repositories.
 
 Rookout Log Scanner **currently supports Python, Java, JavaScript, and C#** scanning. As a result, all the extracted data from the repositories relate to files that are written in those languages only. We are currently working to expand the scope of the project and support additional common languages.
 
