@@ -90,7 +90,7 @@ For full details about the outputs, check out [OUTPUTS.md](https://github.com/Ro
 
 ## Disclaimers
 
-Rookout Log Scanner communicates widely with the [Github api](https://developer.github.com/v3/repos/) and due to that fact it currently doesn't support repositories that are stored on different version control repository hosting services like Bitbucket, Gitlab, Coding, etc. Due to that fact, Github token is a Prerequisite for running the project, as well as its essentiality for accessibility to the user's private repositories.
+Rookout Log Scanner communicates widely with the [Github api](https://developer.github.com/v3/repos/) and due to that fact it currently doesn't support repositories that are stored on different version control repository hosting services like Bitbucket, Gitlab, Coding, etc. Due to that fact, Github token is a prerequisite for running the project, as well as its essentiality for accessibility to the user's private repositories.
 
 Rookout Log Scanner **currently supports Python, Java, JavaScript, and C#** scanning. As a result, all the extracted data from the repositories relate to files that are written in those languages only. We are currently working to expand the scope of the project and support additional common languages.
 
