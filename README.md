@@ -44,7 +44,7 @@ Make sure you have a [Github Token](https://github.com/settings/tokens). (If you
 docker build . -t log-scanner
 ```
 
-2. Automatically collect all of your personal repositories using our [Auto_Collector](https://github.com/Rookout/log-scanner/blob/master/COLLECT_MY_REPOS.md). OR manually edit `inputs/repositories.txt` to include all the repositories you wish to scan, with a newline between them. for example:
+2. Automatically collect all of your personal repositories using our [Auto_Collector](https://github.com/Rookout/log-scanner/blob/master/markdowns/COLLECT_MY_REPOS.md). OR manually edit `inputs/repositories.txt` to include all the repositories you wish to scan, with a newline between them. for example:
 ```
 https://github.com/Rookout/log-scanner
 https://github.com/Rookout/tutorial-python
@@ -61,7 +61,7 @@ docker run \
 ```
 
 _Once the scanner is done, you will find the results in the `outputs` folder._  
-For full details about the outputs, check out [OUTPUTS.md](https://github.com/Rookout/log-scanner/blob/master/OUTPUTS.md).
+For full details about the outputs, check out [markdowns/OUTPUTS.md](https://github.com/Rookout/log-scanner/blob/master/markdowns/OUTPUTS.md).
 
 ### Running Locally
 
@@ -75,7 +75,7 @@ pip install -r requirements.txt
 export GITHUB_TOKEN="<Your_Github_Token>"
 ```
 
-3. Automatically collect all of your personal repositories using our [Auto_Collector](https://github.com/Rookout/log-scanner/blob/master/COLLECT_MY_REPOS.md). 
+3. Automatically collect all of your personal repositories using our [Auto_Collector](https://github.com/Rookout/log-scanner/blob/master/markdowns/COLLECT_MY_REPOS.md). 
 ```bash
 python inputs/collect_my_repos.py 
 ```
@@ -93,7 +93,7 @@ python index.py
 ```
 
 _Once the scanner is done, you will find the results in the `outputs` folder_.  
-For full details about the outputs, check out [OUTPUTS.md](https://github.com/Rookout/log-scanner/blob/master/OUTPUTS.md).
+For full details about the outputs, check out [markdowns/OUTPUTS.md](https://github.com/Rookout/log-scanner/blob/master/markdowns/OUTPUTS.md).
 
 ## Disclaimers
 
