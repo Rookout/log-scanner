@@ -75,7 +75,7 @@ pip install -r requirements.txt
 export GITHUB_TOKEN="<Your_Github_Token>"
 ```
 
-2. Automatically collect all of your personal repositories using our [Auto_Collector](https://github.com/Rookout/log-scanner/blob/master/COLLECT_MY_REPOS.md). 
+3. Automatically collect all of your personal repositories using our [Auto_Collector](https://github.com/Rookout/log-scanner/blob/master/COLLECT_MY_REPOS.md). 
 ```bash
 python inputs/collect_my_repos.py 
 ```
