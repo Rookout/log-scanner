@@ -44,10 +44,11 @@ docker build . -t log-scanner
 
 2. Edit `inputs/repositories.txt` to include all the repositories you wish to scan, with a newline between them. for example:
 ```
+https://github.com/Rookout/log-scanner
+https://github.com/Rookout/tutorial-python
 https://github.com/Rookout/explorook
-https://github.com/Rookout/tutorial-java
-https://github.com/Rookout/tutorial-nodejs
 ```
+OR just automatically collect all of your repositories using our [Additional Tool](https://github.com/Rookout/log-scanner/blob/master/COLLECT_MY_REPOS.md).
 
 3. Run the scanner (don't forget to add [<Your_Github_token>](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line))
 ```bash
