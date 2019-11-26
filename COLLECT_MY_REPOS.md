@@ -12,7 +12,7 @@
 ## Collect my repositories
 Instead of manually collecting and copying repositories URL Addresses to the [repositories.txt file](https://github.com/Rookout/log-scanner/blob/master/inputs/repositories.txt), you can use a little tool which collects automatically all of your repositories URL Addresses into the repositories file.
 
-The requirements are [Python 3.7.4](https://www.python.org/downloads/release/python-374/) (without any additional dependencies) and a valid [GITHUB_TOKEN](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
+The requirements are [Python 3.7.4](https://www.python.org/downloads/release/python-374/) (without any additional dependencies) and a valid [GITHUB_TOKEN](https://github.com/settings/tokens).
 
 To run:
 ```bash
