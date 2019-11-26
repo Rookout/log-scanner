@@ -31,7 +31,7 @@ git clone https://github.com/Rookout/log-scanner.git
 cd log-scanner
 ```
 
-Make sure you have a [Github Token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
+Make sure you have a [Github Token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). (If you're generating new one, it doesn't need anything but repo access.)
 
 ## Usage
 
