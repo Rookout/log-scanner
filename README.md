@@ -17,6 +17,8 @@ Rookout is a data extraction and pipelining platform, which provides the ability
 
 The Log Scanner was designed as a tool for users to scan Github repositories made by them or by others, and analyze logging usage.
 
+* Currently supports: Python, Java, JavaScript, C#.
+
 ## Getting Started
 
 ### Prerequisites
@@ -73,7 +75,12 @@ pip install -r requirements.txt
 export GITHUB_TOKEN="<Your_Github_Token>"
 ```
 
-2. Automatically collect all of your personal repositories using our [Auto_Collector](https://github.com/Rookout/log-scanner/blob/master/COLLECT_MY_REPOS.md). OR manually edit `inputs/repositories.txt` to include all the repositories you wish to scan, with a newline between them. for example:
+2. Automatically collect all of your personal repositories using our [Auto_Collector](https://github.com/Rookout/log-scanner/blob/master/COLLECT_MY_REPOS.md). 
+```bash
+python inputs/collect_my_repos.py 
+```
+
+* Alternatively, you can manually edit `inputs/repositories.txt` to include any repository you wish to scan, with a newline between them. for example:
 ```
 https://github.com/Rookout/log-scanner
 https://github.com/Rookout/tutorial-python
