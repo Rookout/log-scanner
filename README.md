@@ -87,7 +87,7 @@ https://github.com/Rookout/tutorial-python
 https://github.com/Rookout/explorook
 ```
 
-4. Run the program.
+4. Run the program. ([macOS users: please notice](https://github.com/Rookout/log-scanner/issues/1))
 ```bash
 python index.py
 ```
