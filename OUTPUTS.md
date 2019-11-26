@@ -37,7 +37,7 @@ The following list will specify all metrics and metadata contained in the Rookou
 * ***Stars*** - The amount of stars the repository has.
 * ***Watchers*** - The amount of watchers the repository has.
 
-#### Notice
+### Notice
 You can automatically quick analyse the output you received by running the following script:
 ```bash
 python3 outputs/analysis/analysis.py
