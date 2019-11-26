@@ -17,7 +17,8 @@ The following list will specify all metrics and metadata contained in the Rookou
 * ***Project_Name*** - The name of the repository, extracted from the URL. htt<span>ps://github</span>.com/Rookout/**log-scanner**
 * ***Creator*** - The creator of the repository, extracted from the URL. htt<span>ps://github</span>.com/**Rookout**/log-scanner
 * ***Organization_or_User*** - The type of the repository creator, either **Organization** or private **User**
-* ***Contributors_Count*** - The numeric amount of the repository's contributors
+* ***Contributors_Count*** - The numeric amount of the repository's contributors.
+* ***License_Type*** - Is the project either open-source licensed or closed-source.
 * ***Main_Language*** - The main programming language used in the repository, as specified in Github.
 * ***Used_Languages*** - A JSON structured string which holds every known programming language used in the repository, with its percentage from the total files.
 * ***Total_Amount_of_Logs*** - A numeric value which represents the count of any log line of any kind which was found in the repository.
