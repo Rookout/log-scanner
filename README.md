@@ -31,7 +31,7 @@ git clone https://github.com/Rookout/log-scanner.git
 cd log-scanner
 ```
 
-Make sure you have a [Github Token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). (If you're generating a new one, it doesn't need anything but repo access.)
+Make sure you have a [Github Token](https://github.com/settings/tokens). (If you're generating a new one, it doesn't need anything but repo access.)
 
 ## Usage
 
@@ -49,7 +49,7 @@ https://github.com/Rookout/tutorial-python
 https://github.com/Rookout/explorook
 ```
 
-3. Run the scanner (don't forget to add [<Your_Github_token>](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line))
+3. Run the scanner (don't forget to add [<Your_Github_token>](https://github.com/settings/tokens))
 ```bash
 docker run \
     -v `pwd`/inputs:/app/inputs \
@@ -68,7 +68,7 @@ For full details about the outputs, check out [OUTPUTS.md](https://github.com/Ro
 pip install -r requirements.txt
 ```
 
-2. Set [<Your_Github_Token>](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) as a local environment variable.
+2. Set [<Your_Github_Token>](https://github.com/settings/tokens) as a local environment variable.
 ```bash
 export GITHUB_TOKEN="<Your_Github_Token>"
 ```
