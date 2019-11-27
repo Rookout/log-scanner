@@ -60,8 +60,8 @@ docker run \
     log-scanner
 ```
 
-_Once the scanner is done, you will find the results in the `outputs` folder._  
-For full details about the outputs, check out [markdowns/OUTPUTS.md](https://github.com/Rookout/log-scanner/blob/master/markdowns/OUTPUTS.md).
+_Once the scanner is done, you will find the results in the `outputs` folder_.  
+For full details about the outputs and a quick auto analysis tool, check out [markdowns/OUTPUTS.md](https://github.com/Rookout/log-scanner/blob/master/markdowns/OUTPUTS.md).
 
 ### Running Locally
 
