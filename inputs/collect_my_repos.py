@@ -22,7 +22,7 @@ base_url = 'https://api.github.com/user/repos'
 page = 1
 urls = []
 while status:
-    url = base_url + f"?page={page}"
+    url = f"{base_url}?page={page}"
     req = Request(url)
     req.add_header("Authorization", f"token {GITHUB_TOKEN}")
     response = urlopen(req)

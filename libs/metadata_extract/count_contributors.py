@@ -10,7 +10,7 @@ def count_contributors(repo_url):
     sum_contributors = 0
     while status:
         counter = counter + 1
-        api_url = os.path.join("https://api.github.com", "repos", user, project, "contributors")
+        api_url = f"https://api.github.com/repos/{user}/{project}/contributors"
         params = {
             'anon': '1',
             'page': str(counter)

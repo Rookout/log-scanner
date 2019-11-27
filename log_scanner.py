@@ -41,8 +41,8 @@ def handle_repo(repo):
         rook.start()
 
     index, repo_url = repo
+    logging.info(f"running repo number {index + 1}")
     try:
-        logging.info(f"running repo number {index + 1}")
         current_clone_location = clone_repository(repo_url)
         metadata = extract_metadata(repo_url, current_clone_location)
         repo_log_metrics = scan_repo(current_clone_location, repo_url)
@@ -106,13 +106,18 @@ def delete_leftovers():
 
 
 def log_scanner_main():
-    start_with_clean_sheet()
+    GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
+    if GITHUB_TOKEN:
+        start_with_clean_sheet()
 
-    # multiprocess
-    repos_url = extract_repos_list()
-    pool = mp.Pool(mp.cpu_count())
-    metrics_metadata_results = pool.map_async(handle_repo, [(index, repo_url) for index, repo_url in enumerate(repos_url)]).get()
-    pool.close()
+        # multiprocess
+        repos_url = extract_repos_list()
+        pool = mp.Pool(mp.cpu_count())
+        metrics_metadata_results = pool.map_async(handle_repo, [(index, repo_url) for index, repo_url in enumerate(repos_url)]).get()
+        pool.close()
 
-    generate_outputs(metrics_metadata_results)
-    delete_leftovers()
+        generate_outputs(metrics_metadata_results)
+        delete_leftovers()
+    else:
+        logging.error("GITHUB_TOKEN must be supplied as environment variable")
+        quit()

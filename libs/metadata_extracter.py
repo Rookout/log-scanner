@@ -8,7 +8,7 @@ from utils.github_api import make_requests_to_github_api
 def extract_metadata(repo_url, current_clone_location):
     user = repo_url.split("/")[-2]
     project = repo_url.split("/")[-1]
-    api_url = os.path.join("https://api.github.com", "repos", user, project)
+    api_url = f"https://api.github.com/repos/{user}/{project}"
     repo_data = make_requests_to_github_api(api_url)
 
     metadata = {

@@ -21,6 +21,5 @@ python inputs/collect_my_repos.py <Your_Github_Token>
 
 Alternatively, if your GITHUB_TOKEN is an environment variable, the tool will detect and use it:
 ```bash
-export GITHUB_TOKEN=<Your_Github_Token>
 python inputs/collect_my_repos.py 
 ```

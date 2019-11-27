@@ -72,7 +72,10 @@ pip install -r requirements.txt
 
 2. Set [<Your_Github_Token>](https://github.com/settings/tokens) as a local environment variable.
 ```bash
+# macOS
 export GITHUB_TOKEN="<Your_Github_Token>"
+# Windows
+$env:GITHUB_TOKEN="<Your_Github_Token>"
 ```
 
 3. Automatically collect all of your personal repositories using our [Auto_Collector](https://github.com/Rookout/log-scanner/blob/master/markdowns/COLLECT_MY_REPOS.md). 
