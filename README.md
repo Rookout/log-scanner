@@ -70,7 +70,7 @@ For full details about the outputs and a quick auto analysis tool, check out [ma
 pip install -r requirements.txt
 ```
 
-2. Set [<Your_Github_Token>](https://github.com/settings/tokens) as a local environment variable.
+2. Set [<Your_Github_Token>](https://github.com/settings/tokens) as a ***temporary*** local environment variable.
 ```bash
 # macOS
 export GITHUB_TOKEN="<Your_Github_Token>"
