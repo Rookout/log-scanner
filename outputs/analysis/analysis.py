@@ -213,8 +213,11 @@ if __name__ == "__main__":
             file_content.write(f"{corporate} average of log lines per repository - {per_corporate[corporate][0]}\n")
             file_content.write("\n")
 
-    print("done")
+    print("finished")
+
     try:
+        # macOS
         subprocess.call(["open", os.path.join('outputs', 'analysis', 'analysis.txt')])
     except:
-        quit()
+        # windows
+        os.system("notepad.exe outputs/analysis/analysis.txt")

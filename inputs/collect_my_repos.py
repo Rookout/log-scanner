@@ -42,6 +42,8 @@ with open(os.path.join("inputs", "repositories.txt"), 'w') as file_content:
 
 print("finished")
 try:
+    # macOS
     subprocess.call(["open", os.path.join("inputs", "repositories.txt")])
 except:
-    quit()
+    # windows
+    os.system("notepad.exe inputs/repositories.txt")
