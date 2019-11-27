@@ -41,9 +41,12 @@ with open(os.path.join("inputs", "repositories.txt"), 'w') as file_content:
         file_content.write(f"{url}\n")
 
 print("finished")
-try:
-    # macOS
-    subprocess.call(["open", os.path.join("inputs", "repositories.txt")])
-except:
-    # windows
-    os.system("notepad.exe inputs/repositories.txt")
+if sys.platform == "darwin": #macOS
+    try:
+        subprocess.call(["open", os.path.join("inputs", "repositories.txt")])
+    except:
+        quit()
+elif sys.platform in ["win32", "cygwin"]: #Windows
+    try:
+        os.system("notepad.exe inputs/repositories.txt")
+    except: quit()

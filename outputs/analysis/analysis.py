@@ -214,10 +214,12 @@ if __name__ == "__main__":
             file_content.write("\n")
 
     print("finished")
-
-    try:
-        # macOS
-        subprocess.call(["open", os.path.join('outputs', 'analysis', 'analysis.txt')])
-    except:
-        # windows
-        os.system("notepad.exe outputs/analysis/analysis.txt")
+    if sys.platform == "darwin": #macOS
+        try:
+            subprocess.call(["open", os.path.join('outputs', 'analysis', 'analysis.txt')])
+        except:
+            quit()
+    elif sys.platform in ["win32", "cygwin"]: #Windows
+        try:
+            os.system("notepad.exe outputs/analysis/analysis.txt")
+        except: quit()
