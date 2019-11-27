@@ -104,7 +104,7 @@ Rookout Log Scanner communicates widely with the [Github api](https://developer.
 
 Rookout Log Scanner **currently supports Python, Java, JavaScript, and C#** scanning. As a result, all the extracted data from the repositories relate to files that are written in those languages only. We are currently working to expand the scope of the project and support additional common languages.
 
-During the scanning process, at any given moment, few repositories will be cloned onto the user's computer, and immediately deleted at the end of the scanning. The exact amount of simultaneously cloned repositories depends on the machine's CPU capabilities. For the process to succeed, the user should to make sure he has spare memory in accordance with the input repositories. Please notice that the scanning process takes around 10-15 minutes per 100 repositories (on average), depending on their sizes and the internet connection quality.
+During the scanning process, at any given moment, few repositories will be cloned onto the user's computer, and immediately deleted at the end of the scanning. The exact amount of simultaneously cloned repositories depends on the machine's CPU capabilities. For the process to succeed, the user should to make sure he has spare memory in accordance with the input repositories.
 
 Rookout Log Scanner does not guarantee full detection of every log in every file. The detection is executed using [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) and was set up according to research of the common syntax, conventions, tools and packages used in the market. Scanning a repository which includes the unique use of a self-created logging system or deviation of common conventions, might lead to inaccurate results. 
 
