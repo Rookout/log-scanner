@@ -23,3 +23,5 @@ Alternatively, if your GITHUB_TOKEN is an environment variable, the tool will de
 ```bash
 python inputs/collect_my_repos.py 
 ```
+
+After running the tool, a text editor window should be automatically opened showing the repositories.txt file which now includes all the repositories which were collected by the tools. You can ***delete or add manually*** anything you want, and then just save the file and exit.
