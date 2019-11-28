@@ -100,13 +100,13 @@ For full details about the outputs and a quick auto analysis tool, check out [OU
 
 ## Disclaimers
 
-Rookout Log Scanner communicates widely with the [Github api](https://developer.github.com/v3/repos/) and due to that fact it currently doesn't support repositories that are stored on different version control repository hosting services like Bitbucket, Gitlab, Coding, etc. Due to that fact, Github token is a prerequisite for running the project, as well as its essentiality for accessibility to the user's private repositories.
+Rookout Log Scanner communicates widely with the [Github api](https://developer.github.com/v3/repos/) and due to that fact it currently doesn't support repositories that are stored on different version control repository hosting services like Bitbucket, Gitlab, Coding, etc. Due to that fact, Github token is a prerequisite for running the project, as well as its essentiality for accessibility to the user's private repositories. The token is used for connecting Github API only, by the local Python code you've cloned. Feel free to [delete the token](https://github.com/settings/tokens) after running the scanner.
 
 Rookout Log Scanner **currently supports Python, Java, JavaScript, and C#** scanning. As a result, all the extracted data from the repositories relate to files that are written in those languages only. We are currently working to expand the scope of the project and support additional common languages.
 
 During the scanning process, at any given moment, few repositories will be cloned onto the user's computer, and immediately deleted at the end of the scanning. The exact amount of simultaneously cloned repositories depends on the machine's CPU capabilities. For the process to succeed, the user should to make sure he has spare memory in accordance with the input repositories.
 
-Rookout Log Scanner does not guarantee full detection of every log in every file. The detection is executed using [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) and was set up according to research of the common syntax, conventions, tools and packages used in the market. Scanning a repository which includes the unique use of a self-created logging system or deviation of common conventions, might lead to inaccurate results. 
+Rookout Log Scanner does not guarantee full detection of every log in every file. The detection is executed using [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) and was set up according to research of the common syntax, conventions, tools and packages used in the market. Scanning a repository which includes the unique use of a self-created logging system or deviation of common conventions, might lead to inaccurate results.
 
 ## [License](https://github.com/Rookout/log-scanner/blob/master/LICENSE)
 
