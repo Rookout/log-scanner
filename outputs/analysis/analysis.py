@@ -145,15 +145,16 @@ if __name__ == "__main__":
     # collect corporates metrics
     for corporate in corporates.keys():
         corp_df = df.loc[df["Creator"].isin(corporates[corporate])]
-        if corp_df.shape[0] > 0:
+        amount_of_corporate_repos_scanned = corp_df.shape[0]
+        if amount_of_corporate_repos_scanned > 0:
             log_lines_per_repo = two_decimals(corp_df["Total_Amount_of_Logs"].mean())
             all_logs_divided_by_all_lines = to_percentage(corp_df["Total_Logs_Divided_by_Total_Lines"].mean())
             files_with_logs_divided_by_all_files = to_percentage(
                 corp_df["Files_with_Logs_Divided_by_Total_Files"].mean())
             per_corporate[corporate] = [log_lines_per_repo, all_logs_divided_by_all_lines,
-                                        files_with_logs_divided_by_all_files]
+                                        files_with_logs_divided_by_all_files, amount_of_corporate_repos_scanned]
         else:
-            per_corporate[corporate] = [0, 0, 0]
+            per_corporate[corporate] = [0, 0, 0, 0]
 
     # write to file
     with open(os.path.join('outputs', 'analysis', 'analysis.txt'), 'w') as file_content:
@@ -207,6 +208,7 @@ if __name__ == "__main__":
         file_content.write("Corporates:\n")
         for corporate in per_corporate.keys():
             file_content.write(f"{corporate}:\n")
+            file_content.write(f"amount of repositories which were scanned - {per_corporate[corporate][3]}.\n")
             file_content.write(
                 f"{corporate} average all logs divided by all code lines - {per_corporate[corporate][1]}\n")
             file_content.write(
