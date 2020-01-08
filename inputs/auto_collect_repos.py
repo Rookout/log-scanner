@@ -106,7 +106,7 @@ def check_if_not_a_code_repo(repo_description, lang, repo_name, index):
 
 def check_if_not_active(repo_name, index):  # check if there were any commits in last 50 days
     days_limit = 50
-    commit_api_url = f"https://api.github.com/repos/{repo_name}/commits")
+    commit_api_url = f"https://api.github.com/repos/{repo_name}/commits"
     headers = {
         'Authorization': 'token %s' % GITHUB_TOKEN
     }
@@ -132,7 +132,7 @@ def sanity_check(repo, lang, index):
 
 
 def set_search_request(lang, page, query):
-    api_url = f"https://api.github.com/search/repositories")
+    api_url = f"https://api.github.com/search/repositories"
     headers = {'Authorization': f'token {GITHUB_TOKEN}'}
     params = {
         'q': f'{query} language:{lang}',
