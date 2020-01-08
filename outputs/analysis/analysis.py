@@ -134,11 +134,18 @@ if __name__ == "__main__":
         "Amazon": ["amazon", "amzn" "aws", "aws-amplify", "aws-cloudformation", "aws-quickstart", "aws-samples",
                    "awslabs"],
         "Google": ["google", "google-ar", "googleads", "googleanalytics", "googleapis", "googlearchive",
-                   "GoogleChromeLabs", "GoogleCloudPlatform", "GoogleContainerTools", "googlemaps", "googleprojectzero",
-                   "googlesamples", "googleevr"],
-        "Microsoft": ["microsoft", "MicrosoftDocs", "MicrosoftTranslator"],
+                   "GoogleChromeLabs", "GoogleCloudPlatform", "GoogleContainerTools", "googlemaps",
+                   "googleprojectzero", "googlesamples", "googleevr"],
+        "Microsoft": ["microsoft", "MicrosoftDocs", "MicrosoftTranslator", "dotnet", "SharePoint", "aspnet",
+                      "NuGet", "NuGetPackageExplorer"],
         "Apple": ["apple"],
-        "Facebook": ["facebook", "facebookresearch", "facebookincubator"]
+        "Facebook": ["facebook", "facebookresearch", "facebookincubator"],
+        "Oracle": ["oracle", "openjdk"],
+        "IBM": ["IBM", "OpenLiberty", "RedHatOfficial", "openstack"],
+        "Apache": ["apache"],
+        "VMWare": ["vmware"],
+        "NSA": ["NationalSecurityAgency"],
+        "JetBrains": ["JetBrains"]
     }
     per_corporate = {}
 
