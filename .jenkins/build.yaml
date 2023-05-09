@@ -1,0 +1,4 @@
+- dockerfile: /Dockerfile
+  envVars: []
+  imageName: log-scanner
+  imageRepo: us-central1-docker.pkg.dev/rookoutdevelopment/development-images
